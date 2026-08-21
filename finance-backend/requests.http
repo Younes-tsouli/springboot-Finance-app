@@ -1,0 +1,32 @@
+### Get all transactions
+GET http://localhost:8080/api/transactions
+
+### Create a transaction
+POST http://localhost:8080/api/transactions
+Content-Type: application/json
+
+{
+  "title": "Groceries",
+  "amount": 50.0,
+  "category": "Food",
+  "type": "EXPENSE",
+  "date": "2024-01-13"
+}
+
+### Get transaction by id
+GET http://localhost:8080/api/transactions/1
+
+### Update a transaction
+PUT http://localhost:8080/api/transactions/1
+Content-Type: application/json
+
+{
+  "title": "Groceries Updated",
+  "amount": 75.0,
+  "category": "Food",
+  "type": "EXPENSE",
+  "date": "2024-01-13"
+}
+
+### Delete a transaction
+DELETE http://localhost:8080/api/transactions/1

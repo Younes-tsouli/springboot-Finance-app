@@ -1,0 +1,17 @@
+services:
+  db:
+    container_name: postgres-finance
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: younes
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: finance_db        # 👈 add this so the DB is auto-created
+      PGDATA: /data/postgres
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5332:5432"
+    restart: unless-stopped          # 👈 removed the custom network, not needed here
+
+volumes:
+  db:

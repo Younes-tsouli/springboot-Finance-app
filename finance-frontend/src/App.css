@@ -1,0 +1,510 @@
+:root {
+  --on-surface-bright: #0b513d;
+  --surface-bright: #f0fdf4;
+  --surface-card: rgb(237, 245, 239);
+  --expences: #ba3340;
+  --income: #055a24;
+  --surface-category: #eaf7ee;
+  --on-background: #131e19;
+  --inverse-surface: #27332d;
+  --on-secondary-fixed: #002117;
+  --outline: #526151;
+  --surface: #f0fdf4;
+  --form-bg: #ffffff;
+  --input-bg: #f8fcf7;
+  --input-border: #d9e6dd;
+  --submit-hover: #00592a;
+  --inverse-on-surface: #e7f4eb;
+  --on-tertiary: #ffffff;
+  --add-btn: #006e2d;
+  --inverse-primary: #53e076;
+  --primary-container: #1db954;
+  --surface-container: #e4f1e8;
+  --on-error: #ffffff;
+  --secondary-fixed-dim: #95d3ba;
+  --primary-fixed: #72fe8f;
+  --surface-dim: #d0ddd5;
+  --error-container: #ffdad6;
+}
+
+/* ------------------------ BASE ------------------------ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: var(--surface-bright);
+  color: var(--on-background);
+}
+
+/* ------------------------ LAYOUT (FLEX) ------------------------ */
+
+.dashboard {
+  display: flex; /* Sidebar à gauche, contenu à droite */
+  min-height: 100vh;
+}
+
+/* Conteneur pour tout ce qui n'est pas le Sidebar */
+.main-content {
+  flex: 1;
+  margin-left: 280px; /* Laisse la place au Sidebar fixe */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ------------------------ SIDEBAR ------------------------ */
+
+aside {
+  width: 280px;
+  background: var(--surface-category);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem 0;
+  position: fixed; /* Reste à gauche au scroll */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-right: 1px solid var(--surface-card);
+}
+
+.brand {
+  padding: 0 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.brand h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--on-background);
+}
+
+.brand p {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--on-surface-bright);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+nav a,
+.bottom a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2.5rem;
+  font-size: 15px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--on-surface-bright);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+nav a.active {
+  background: white;
+  color: var(--surface-tint);
+  border-radius: 9999px 0 0 9999px;
+  margin-left: 1rem;
+  padding-left: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ------------------------ HEADER ------------------------ */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.header .title {
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--on-background);
+}
+
+.header .navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header .navigation a {
+  text-decoration: none;
+  color: var(--on-surface-bright);
+  font-weight: 500;
+}
+
+.header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--surface-card);
+}
+
+/* ------------------------ CARDS (MONTH INFO) ------------------------ */
+
+.month-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.carte {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+  background: rgba(213, 222, 216, 0.5);
+  border-radius: 16px;
+  height: 120px;
+}
+
+.carte .title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--outline);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.carte .money {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--on-background);
+}
+
+#balance {
+  background: white;
+  & .money {
+    font-size: 32px;
+    font-weight: 900;
+  }
+}
+
+.money.income {
+  color: var(--income);
+}
+
+.money.expenses {
+  color: var(--expences);
+}
+
+/* ------------------------ TRANSACTIONS & CHART ------------------------ */
+/* TRANSACTION */
+
+.more-info {
+  display: flex;
+  gap: 2rem;
+  max-height: 700px;
+}
+
+.transaction-container {
+  flex: 2;
+}
+
+.transaction-container .title {
+  padding: 1rem;
+}
+
+.recent-transactions {
+  flex-direction: column;
+  background: var(--form-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 24px;
+  padding: 1.6rem;
+  box-shadow: 0 18px 60px rgba(15, 67, 43, 0.08);
+  border-radius: 20px;
+  padding: 1.5rem;
+  gap: 0.5rem;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  color: var(--on-background);
+  font-size: 1rem;
+}
+
+/* CHART */
+
+.transactions-by-category {
+  flex: 1;
+  background: var(--form-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 24px;
+  padding: 1.6rem;
+  box-shadow: 0 18px 60px rgba(15, 67, 43, 0.08);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+/* ------------------------ UTILS ------------------------ */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* ------------------------ FORM ------------------------ */
+
+.transaction-form {
+  width: 100%;
+  max-width: 620px;
+  background: var(--form-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 24px;
+  padding: 1.6rem;
+  box-shadow: 0 18px 60px rgba(15, 67, 43, 0.08);
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.title {
+  align-self: center;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--on-background);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  color: var(--on-background);
+  font-size: 1rem;
+}
+
+.form input:focus,
+.form select:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(83, 224, 118, 0.16);
+}
+
+.radio-group {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--input-border);
+  background: var(--surface-bright);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-option input[type="radio"]:checked + span {
+  background: var(--add-btn);
+  color: var(--on-tertiary);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+}
+
+.radio-option span {
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+}
+
+.submit-btn {
+  align-self: center;
+  width: 220px;
+  height: 44px;
+  background-color: var(--add-btn);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.transaction-container {
+  background: var(--form-bg);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.transaction-container .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-background);
+  margin-bottom: 1rem;
+}
+
+.recent-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--surface-bright);
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  transition: background-color 0.2s;
+}
+
+.transaction-item:hover {
+  background: var(--surface-container);
+}
+
+.transaction-title {
+  flex: 1;
+  font-weight: 500;
+  color: var(--on-background);
+}
+
+.transaction-amount {
+  font-weight: 600;
+  color: var(--on-background);
+  text-align: right;
+  min-width: 80px;
+}
+
+.transaction-amount.income {
+  color: var(--income);
+}
+
+.transaction-amount.expense {
+  color: var(--expences);
+}
+
+.delete-btn {
+  background: var(--expences);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+.view-all-btn {
+  margin-top: 1rem;
+  align-self: center;
+  background: var(--add-btn);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-all-btn:hover {
+  background: var(--submit-hover);
+}
+  
+
+.transaction-item:hover {
+  background: var(--on-tertiary);
+}
+
+.transaction-title {
+  flex: 1;
+  font-weight: 500;
+  color: var(--on-background);
+}
+
+.transaction-amount {
+  font-weight: 600;
+  color: var(--on-background);
+  text-align: right;
+  min-width: 80px;
+  margin-right: 20px;
+}
+
+.delete-btn {
+  background: var(--on-surface-bright);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background: var(--on-background);
+}
+
+/* ------------------------ TRANSACTIONS ------------------------ */
+
+.recent-transactions {
+  display: flex;
+  padding: 1rem 1.5rem;
+}
+
